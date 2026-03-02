@@ -127,31 +127,6 @@ const toAccommodationPayload = (listingData = {}) => ({
   reviews: toNumber(listingData.reviews, 0),
   enhancedCleaning: true,
   selfCheckIn: true,
-    hostName: accommodation.hostName || '',
-    hostJoined: accommodation.hostJoined || '',
-    isSuperhost: accommodation.isSuperhost ?? true,
-    hostResponseRate: accommodation.hostResponseRate || '',
-    hostResponseTime: accommodation.hostResponseTime || '',
-    hostBadges: Array.isArray(accommodation.hostBadges) ? accommodation.hostBadges : [],
-    houseRules: Array.isArray(accommodation.houseRules) ? accommodation.houseRules : [],
-    healthSafety: Array.isArray(accommodation.healthSafety) ? accommodation.healthSafety : [],
-    cancellationPolicy: Array.isArray(accommodation.cancellationPolicy)
-      ? accommodation.cancellationPolicy
-      : [],
-    footerSupport: {
-      support: Array.isArray(accommodation.footerSupport?.support)
-        ? accommodation.footerSupport.support
-        : [],
-      community: Array.isArray(accommodation.footerSupport?.community)
-        ? accommodation.footerSupport.community
-        : [],
-      hosting: Array.isArray(accommodation.footerSupport?.hosting)
-        ? accommodation.footerSupport.hosting
-        : [],
-      about: Array.isArray(accommodation.footerSupport?.about)
-        ? accommodation.footerSupport.about
-        : [],
-    },
   hostName: listingData.hostName || '',
   hostJoined: listingData.hostJoined || '',
   isSuperhost: listingData.isSuperhost ?? true,
