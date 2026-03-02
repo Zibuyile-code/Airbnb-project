@@ -70,7 +70,7 @@ const Login = () => {
 
       // Redirect after 1.5 seconds
       setTimeout(() => {
-        navigate('/');
+        navigate('/dashboard');
       }, 1500);
     } catch (error) {
       const enteredIdentifier = String(formData.email || '').trim().toLowerCase();
@@ -89,7 +89,7 @@ const Login = () => {
         setMessageType('success');
         setMessage('Logged in with demo mode (API unavailable). Redirecting...');
         setTimeout(() => {
-          navigate('/');
+          navigate('/dashboard');
         }, 1200);
         return;
       }

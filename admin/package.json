@@ -1,5 +1,5 @@
 {
-  "name": "airbnb-public-frontend",
+  "name": "airbnb-admin-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

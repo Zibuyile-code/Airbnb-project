@@ -244,7 +244,7 @@ const LocationDetails = () => {
 
       await api.post('/reservations', reservationData);
       alert('Reservation created successfully!');
-      navigate('/');
+      navigate('/reservations');
     } catch (err) {
       alert('Failed to create reservation: ' + (err.response?.data?.message || err.message));
     }

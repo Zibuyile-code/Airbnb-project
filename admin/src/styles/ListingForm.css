@@ -1,0 +1,272 @@
+/* Listing Form Styling */
+.listing-form-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.form-header h1 {
+  color: #222;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.form-header p {
+  color: #717171;
+  font-size: 16px;
+}
+
+.listing-form {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  margin-bottom: 40px;
+}
+
+.form-section h2 {
+  color: #222;
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-row.full {
+  grid-template-columns: 1fr;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  color: #222;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #ff5a5f;
+  box-shadow: 0 0 5px rgba(255, 90, 95, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+  border-color: #d32f2f;
+}
+
+.amenities-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.amenity-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.amenity-checkbox input {
+  width: auto;
+  cursor: pointer;
+}
+
+.amenity-checkbox label {
+  margin: 0;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: #ff5a5f;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #ff3e45;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #222;
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-form {
+    padding: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* Airbnb Lookalike Overrides */
+.listing-form-container {
+  max-width: 1040px;
+  margin: 28px auto 56px;
+  padding: 0 24px;
+}
+
+.form-header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.form-header h1 {
+  font-size: clamp(1.8rem, 3.2vw, 2.3rem);
+  letter-spacing: -0.02em;
+}
+
+.form-header p {
+  color: #717171;
+}
+
+.listing-form {
+  border-radius: 18px;
+  border: 1px solid #ebebeb;
+  box-shadow: none;
+}
+
+.form-section h2 {
+  border-bottom: 1px solid #f0f0f0;
+  letter-spacing: -0.01em;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  border-color: #d6d6d6;
+  border-radius: 10px;
+  padding: 12px 13px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #222;
+  box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.08);
+}
+
+.amenities-list {
+  gap: 14px;
+}
+
+.amenity-checkbox {
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.button-group {
+  justify-content: flex-start;
+}
+
+.btn {
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background: #ff385c;
+}
+
+.btn-primary:hover {
+  background: #e31c5f;
+}
+
+.btn-secondary {
+  background: #f7f7f7;
+  border: 1px solid #ebebeb;
+}
+
+@media (max-width: 768px) {
+  .listing-form-container {
+    padding: 0 16px;
+  }
+
+  .listing-form {
+    border-radius: 14px;
+    padding: 24px 16px;
+  }
+}

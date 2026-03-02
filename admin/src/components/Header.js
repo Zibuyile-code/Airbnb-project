@@ -9,7 +9,9 @@ const Header = () => {
   const location = useLocation();
   const destinationOptions = DESTINATION_OPTIONS;
   const isHomePage = location.pathname === '/';
-  const isListingDetailsPage = Boolean(matchPath('/listings/:id', location.pathname));
+  const isListingDetailsPage = Boolean(matchPath('/listings/:id', location.pathname))
+    && location.pathname !== '/listings/create'
+    && !Boolean(matchPath('/listings/edit/:id', location.pathname));
   const [user, setUser] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [destinationDropdownOpen, setDestinationDropdownOpen] = useState(false);
@@ -122,6 +124,18 @@ const Header = () => {
                   <div className="dropdown-menu">
                     <Link to="/" onClick={() => setDropdownOpen(false)}>
                       Home
+                    </Link>
+                    <Link to="/dashboard" onClick={() => setDropdownOpen(false)}>
+                      Dashboard
+                    </Link>
+                    <Link to="/reservations" onClick={() => setDropdownOpen(false)}>
+                      View Reservations
+                    </Link>
+                    <Link to="/listings" onClick={() => setDropdownOpen(false)}>
+                      My Listings
+                    </Link>
+                    <Link to="/admin/add-hotel" onClick={() => setDropdownOpen(false)}>
+                      Admin Add Hotel
                     </Link>
                     <button onClick={handleLogout}>Logout</button>
                   </div>
@@ -243,7 +257,7 @@ const Header = () => {
           </button>
 
           <div className="listing-header-actions">
-            <button type="button" className="listing-host-btn" onClick={() => navigate('/login')}>
+            <button type="button" className="listing-host-btn" onClick={() => (user ? navigate('/dashboard') : navigate('/login'))}>
               Become a Host
             </button>
             <button type="button" className="listing-globe-btn" aria-label="Select language">
@@ -274,6 +288,18 @@ const Header = () => {
                   <div className="dropdown-menu">
                     <Link to="/" onClick={() => setDropdownOpen(false)}>
                       Home
+                    </Link>
+                    <Link to="/dashboard" onClick={() => setDropdownOpen(false)}>
+                      Dashboard
+                    </Link>
+                    <Link to="/reservations" onClick={() => setDropdownOpen(false)}>
+                      View Reservations
+                    </Link>
+                    <Link to="/listings" onClick={() => setDropdownOpen(false)}>
+                      My Listings
+                    </Link>
+                    <Link to="/admin/add-hotel" onClick={() => setDropdownOpen(false)}>
+                      Admin Add Hotel
                     </Link>
                     <button onClick={handleLogout}>Logout</button>
                   </div>
@@ -326,6 +352,18 @@ const Header = () => {
                 <div className="dropdown-menu">
                   <Link to="/" onClick={() => setDropdownOpen(false)}>
                     Home
+                  </Link>
+                  <Link to="/dashboard" onClick={() => setDropdownOpen(false)}>
+                    Dashboard
+                  </Link>
+                  <Link to="/reservations" onClick={() => setDropdownOpen(false)}>
+                    View Reservations
+                  </Link>
+                  <Link to="/listings" onClick={() => setDropdownOpen(false)}>
+                    My Listings
+                  </Link>
+                  <Link to="/admin/add-hotel" onClick={() => setDropdownOpen(false)}>
+                    Admin Add Hotel
                   </Link>
                   <button onClick={handleLogout}>Logout</button>
                 </div>
