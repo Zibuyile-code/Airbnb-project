@@ -169,6 +169,15 @@ api.interceptors.request.use(
 );
 
 // Auth endpoints
+const normalizeLoginIdentifier = (value = '') => {
+  const trimmedValue = String(value).trim();
+  if (!trimmedValue.includes('@')) return trimmedValue;
+
+  const [localPart, ...domainParts] = trimmedValue.split('@');
+  const domainPart = domainParts.join('@').replace(/,/g, '.');
+  return `${localPart}@${domainPart}`;
+};
+
 export const authAPI = {
   register: async (data) => {
     const username = data?.username || data?.email?.split('@')?.[0] || `host${Date.now()}`;
@@ -184,7 +193,7 @@ export const authAPI = {
     return normalizeAuthResponse(response);
   },
   login: async (data) => {
-    const rawIdentifier = (data?.username || data?.email || '').trim();
+    const rawIdentifier = normalizeLoginIdentifier(data?.username || data?.email || '');
     const username = rawIdentifier.includes('@')
       ? rawIdentifier.split('@')[0]
       : rawIdentifier;
