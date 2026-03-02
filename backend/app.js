@@ -34,8 +34,10 @@ const app = express();
  * Configure CORS to allow requests from specified origins
  * and enable credentials (cookies) for cross-origin requests.
  */
+const normalizeOrigin = (value = '') => String(value).trim().replace(/\/$/, '');
+
 const allowedOrigins = process.env.CLIENT_ORIGIN
-  ? process.env.CLIENT_ORIGIN.split(',')
+  ? process.env.CLIENT_ORIGIN.split(',').map(normalizeOrigin).filter(Boolean)
   : [];
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -45,7 +47,11 @@ app.use(
     origin: function (origin, callback) {
       // allow requests with no origin (browser top-level navigation, mobile apps, curl)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
+
+      const normalizedRequestOrigin = normalizeOrigin(origin);
+      if (allowedOrigins.includes('*') || allowedOrigins.includes(normalizedRequestOrigin)) {
+        return callback(null, true);
+      }
 
       console.warn(`Blocked by CORS: ${origin}`);
       return callback(new Error('Not allowed by CORS'));
