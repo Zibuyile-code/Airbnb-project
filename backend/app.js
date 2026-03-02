@@ -12,6 +12,7 @@
 const express = require('express');
 const qs = require('qs');
 const path = require('path');
+const fs = require('fs');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
@@ -88,13 +89,23 @@ app.use(compression());
  */
 if (process.env.NODE_ENV === 'production') {
   const frontendBuildPath = path.resolve(__dirname, '../frontend/build');
+  const hasFrontendBuild = fs.existsSync(frontendBuildPath);
 
-  app.use(express.static(frontendBuildPath));
+  if (hasFrontendBuild) {
+    app.use(express.static(frontendBuildPath));
 
-  app.get('/{*any}', (req, res, next) => {
-    if (req.originalUrl.startsWith('/api')) return next();
-    return res.sendFile(path.join(frontendBuildPath, 'index.html'));
-  });
+    app.get('/{*any}', (req, res, next) => {
+      if (req.originalUrl.startsWith('/api')) return next();
+      return res.sendFile(path.join(frontendBuildPath, 'index.html'));
+    });
+  } else {
+    app.get('/', (req, res) => {
+      return res.status(200).json({
+        status: 'success',
+        message: 'Backend API is running',
+      });
+    });
+  }
 }
 
 /**
